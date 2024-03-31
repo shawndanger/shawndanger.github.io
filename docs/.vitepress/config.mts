@@ -1,28 +1,45 @@
-import { defineConfig } from 'vitepress'
+import { defineConfig, type DefaultTheme } from 'vitepress'
+import { nav } from './navConfig.ts'
+import { sidebar_guide } from './sidebars/guide.ts'
+import { sidebar_structure } from './sidebars/structure.ts'
+import { sidebar_algorithm } from './sidebars/algorithm.ts'
+import { sidebar_design} from './sidebars/design.ts'
+import { sidebar_architecture } from './sidebars/architecture.ts'
+import { sidebar_growth } from './sidebars/growth.ts'
+import { sidebar_interview } from './sidebars/interview.ts'
+import { sidebar_tools } from './sidebars/tools.ts'
+import { sidebar_about } from './sidebars/about.ts'
+import { sidebar_about_examples } from './sidebars/aboutExamples.ts'
+
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "shawndanger",
-  description: "shawndanger blog",
+  title: "程序匠",
+  description: "程序匠",
+  srcDir: './src',
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
-    nav: [
-      { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' }
-    ],
+    nav: nav(),
 
-    sidebar: [
-      {
-        text: 'Examples',
-        items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
-        ]
-      }
-    ],
+    sidebar: {
+      '/guide/': { base: '/guide/', items: sidebar_guide() },
+      '/structure/': { base: '/structure/', items: sidebar_structure() },
+      '/algorithm/': { base: '/algorithm/', items: sidebar_algorithm() },
+      '/design/': { base: '/design/', items: sidebar_design() },
+      '/architecture/': { base: '/architecture/', items: sidebar_architecture() },
+      '/growth/': { base: '/growth/', items: sidebar_growth() },
+      '/interview/': { base: '/interview/', items: sidebar_interview() },
+      '/tools/': { base: '/tools/', items: sidebar_tools() },
+      '/about/': { base: '/about/', items: sidebar_about() },
+      '/about/examples/': { base: '/about/examples/', items: sidebar_about_examples() },
+    },
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
-    ]
+      { icon: 'github', link: 'https://github.com/shawndanger' }
+    ],
+    footer: {
+      message: 'Released under the MIT License.',
+      copyright: `Copyright © 2019-${new Date().getFullYear()} shawndanger.`
+    }
   }
 })

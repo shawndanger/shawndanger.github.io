@@ -3,16 +3,16 @@
 layout: home
 
 hero:
-  name: "shawndanger"
-  text: "shawndanger blog"
-  tagline: My great project tagline
+  name: "程序匠"
+  text: "程序匠的博客"
+  tagline: 这里记录程序匠的学习记录
   actions:
     - theme: brand
       text: Markdown Examples
-      link: /examples/markdown-examples
+      link: /about/examples/markdown-examples
     - theme: alt
       text: API Examples
-      link: /examples/api-examples
+      link: /about/examples/api-examples
 
 features:
   - title: Feature A
