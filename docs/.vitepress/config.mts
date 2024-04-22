@@ -39,7 +39,17 @@ export default defineConfig({
     ],
     footer: {
       message: 'Released under the MIT License.',
-      copyright: `Copyright © 2019-${new Date().getFullYear()} shawndanger.`
+      copyright: `Copyright © 2014-${new Date().getFullYear()} shawndanger.`
+    }
+  },
+  markdown: {
+    lineNumbers: true
+  },
+  lastUpdated: {
+    text: '最后更新时间',
+    formatOptions: {
+      dateStyle: 'full',
+      timeStyle: 'medium'
     }
   }
 })

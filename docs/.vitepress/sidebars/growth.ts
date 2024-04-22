@@ -3,10 +3,10 @@ import { type DefaultTheme } from 'vitepress'
 export function sidebar_growth(): DefaultTheme.SidebarItem[] {
     return [
       {
-        text: '待补充',
+        text: '精彩文章',
         collapsed: false,
         items: [
-          { text: '待补充', link: '/' },
+          { text: '如何超过大多数人', link: '/如何超过大多数人.md' },
 
         ]
       },

@@ -3,7 +3,7 @@ import { type DefaultTheme } from 'vitepress'
 export function sidebar_guide(): DefaultTheme.SidebarItem[] {
     return [
       {
-        text: '不写，就无法思考',
+        text: '导读',
         collapsed: false,
         items: [
           { text: '不写，就无法思考', link: '/不写，就无法思考' },
@@ -18,6 +18,6 @@ export function sidebar_guide(): DefaultTheme.SidebarItem[] {
 
         ]
       },
-      { text: '其它链接', base: '/about/', link: '/' }
+      { text: '个人成长', base: '/growth/', link: '/' }
     ]
   }

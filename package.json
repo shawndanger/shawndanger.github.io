@@ -2,9 +2,12 @@
   "scripts": {
     "docs:dev": "vitepress dev docs --host --cors --port 5173",
     "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs --port 80"
+    "docs:preview": "vitepress preview docs --port 80",
+    "d": "vitepress dev docs --host --cors --port 5173",
+    "b": "vitepress build docs",
+    "v": "vitepress preview docs --port 80"
   },
   "devDependencies": {
-    "vitepress": "^1.0.1"
+    "vitepress": "^1.1.3"
   }
 }
