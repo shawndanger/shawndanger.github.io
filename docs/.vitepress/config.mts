@@ -1,15 +1,13 @@
 import { defineConfig, type DefaultTheme } from 'vitepress'
 import { nav } from './navConfig.ts'
 import { sidebar_guide } from './sidebars/guide.ts'
-import { sidebar_structure } from './sidebars/structure.ts'
-import { sidebar_algorithm } from './sidebars/algorithm.ts'
-import { sidebar_design} from './sidebars/design.ts'
-import { sidebar_architecture } from './sidebars/architecture.ts'
-import { sidebar_growth } from './sidebars/growth.ts'
 import { sidebar_interview } from './sidebars/interview.ts'
 import { sidebar_tools } from './sidebars/tools.ts'
+import { sidebar_growth } from './sidebars/growth'
 import { sidebar_about } from './sidebars/about.ts'
 import { sidebar_about_examples } from './sidebars/aboutExamples.ts'
+import {sidebar_ComputerBase} from "./sidebars/computerBase";
+import {sidebar_bigdata} from "./sidebars/bigdata";
 
 
 // https://vitepress.dev/reference/site-config
@@ -17,39 +15,151 @@ export default defineConfig({
   title: "程序匠",
   description: "程序匠",
   srcDir: './src',
+  cleanUrls: true,
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: nav(),
-
+    search: { provider: 'local',options: searchOptions() },
     sidebar: {
-      '/guide/': { base: '/guide/', items: sidebar_guide() },
-      '/structure/': { base: '/structure/', items: sidebar_structure() },
-      '/algorithm/': { base: '/algorithm/', items: sidebar_algorithm() },
-      '/design/': { base: '/design/', items: sidebar_design() },
-      '/architecture/': { base: '/architecture/', items: sidebar_architecture() },
-      '/growth/': { base: '/growth/', items: sidebar_growth() },
-      '/interview/': { base: '/interview/', items: sidebar_interview() },
-      '/tools/': { base: '/tools/', items: sidebar_tools() },
-      '/about/': { base: '/about/', items: sidebar_about() },
-      '/about/examples/': { base: '/about/examples/', items: sidebar_about_examples() },
+      // '指南': { base: '/指南', items: sidebar_guide() },
+      '计算机基础': { base: '/计算机基础', items: sidebar_ComputerBase() },
+      '大数据': { base: '/大数据', items: sidebar_bigdata() },
+      '成长': { base: '/成长', items: sidebar_growth() },
+      '面试': { base: '/面试', items: sidebar_interview() },
+      '工具': { base: '/工具', items: sidebar_tools() },
+      '关于': { base: '/关于', items: sidebar_about() },
+      '/about/examples/': { base: '/关于/examples', items: sidebar_about_examples() },
     },
-
+    outline: {level: 3, label: '页面导航'},
     socialLinks: [
       { icon: 'github', link: 'https://github.com/shawndanger' }
     ],
+    editLink: {
+      pattern: 'https://github.com/shawndanger/shawndanger.github.io/edit/master/docs/src/:path',
+      text: '在Github上编辑此页面'
+    },
     footer: {
       message: 'Released under the MIT License.',
       copyright: `Copyright © 2024-${new Date().getFullYear()} shawndanger.`
-    }
+    },
+    docFooter: {
+      prev: '上一页',
+      next: '下一页'
+    },
+    lastUpdated: {
+      text: '最后更新于'
+    },
+    notFound: {
+      title: '页面未找到',
+      quote:
+          '但如果你不改变方向，并且继续寻找，你可能最终会到达你所前往的地方。',
+      linkLabel: '前往首页',
+      linkText: '带我回首页'
+    },
+    langMenuLabel: '多语言',
+    returnToTopLabel: '回到顶部',
+    sidebarMenuLabel: '菜单',
+    darkModeSwitchLabel: '主题',
+    lightModeSwitchTitle: '切换到浅色模式',
+    darkModeSwitchTitle: '切换到深色模式',
+    skipToContentLabel: '跳转到内容'
+
   },
   markdown: {
     lineNumbers: true
   },
+
   lastUpdated: {
-    text: '最后更新时间',
     formatOptions: {
       dateStyle: 'full',
       timeStyle: 'medium'
     }
   }
 })
+
+
+function searchOptions(): Partial<DefaultTheme.AlgoliaSearchOptions> {
+  return {
+    placeholder: '搜索文档',
+    translations: {
+      button: {
+        buttonText: '搜索文档',
+        buttonAriaLabel: '搜索文档'
+      },
+      modal: {
+        searchBox: {
+          clearButtonTitle: '清除查询条件',
+          clearButtonAriaLabel: '清除查询条件',
+          closeButtonText: '关闭',
+          closeButtonAriaLabel: '关闭',
+          placeholderText: '搜索文档',
+          placeholderTextAskAi: '向 AI 提问：',
+          placeholderTextAskAiStreaming: '回答中...',
+          searchInputLabel: '搜索',
+          backToKeywordSearchButtonText: '返回关键字搜索',
+          backToKeywordSearchButtonAriaLabel: '返回关键字搜索'
+        },
+        startScreen: {
+          recentSearchesTitle: '搜索历史',
+          noRecentSearchesText: '没有搜索历史',
+          saveRecentSearchButtonTitle: '保存至搜索历史',
+          removeRecentSearchButtonTitle: '从搜索历史中移除',
+          favoriteSearchesTitle: '收藏',
+          removeFavoriteSearchButtonTitle: '从收藏中移除',
+          recentConversationsTitle: '最近的对话',
+          removeRecentConversationButtonTitle: '从历史记录中删除对话'
+        },
+        errorScreen: {
+          titleText: '无法获取结果',
+          helpText: '你可能需要检查你的网络连接'
+        },
+        noResultsScreen: {
+          noResultsText: '无法找到相关结果',
+          suggestedQueryText: '你可以尝试查询',
+          reportMissingResultsText: '你认为该查询应该有结果？',
+          reportMissingResultsLinkText: '点击反馈'
+        },
+        resultsScreen: {
+          askAiPlaceholder: '向 AI 提问： '
+        },
+        askAiScreen: {
+          disclaimerText: '答案由 AI 生成，可能不准确，请自行验证。',
+          relatedSourcesText: '相关来源',
+          thinkingText: '思考中...',
+          copyButtonText: '复制',
+          copyButtonCopiedText: '已复制！',
+          copyButtonTitle: '复制',
+          likeButtonTitle: '赞',
+          dislikeButtonTitle: '踩',
+          thanksForFeedbackText: '感谢你的反馈！',
+          preToolCallText: '搜索中...',
+          duringToolCallText: '搜索 ',
+          afterToolCallText: '已搜索',
+          aggregatedToolCallText: '已搜索'
+        },
+        footer: {
+          selectText: '选择',
+          submitQuestionText: '提交问题',
+          selectKeyAriaLabel: 'Enter 键',
+          navigateText: '切换',
+          navigateUpKeyAriaLabel: '向上箭头',
+          navigateDownKeyAriaLabel: '向下箭头',
+          closeText: '关闭',
+          backToSearchText: '返回搜索',
+          closeKeyAriaLabel: 'Esc 键',
+          poweredByText: '搜索提供者'
+        }
+      }
+    },
+    miniSearch: {
+      options: {
+        tokenize: customTokenizer // 使用自定义分词器
+      },
+    },
+  }
+}
+// 自定义分词函数
+function customTokenizer(text) {
+  // 去除空格，每个字分词
+  return Array.from(new Intl.Segmenter('cn', { granularity: 'word' }).segment(text.replace(/ /g, ''))).map(item => item.segment)
+}

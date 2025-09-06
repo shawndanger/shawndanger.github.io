@@ -2,13 +2,13 @@ import { type DefaultTheme } from 'vitepress'
 import {generateNestedSidebar} from "../genSidebar";
 import path from "path";
 
-export function sidebar_tools(): DefaultTheme.SidebarItem[] {
+export function sidebar_bigdata(): DefaultTheme.SidebarItem[] {
     // return [
     //   {
-    //     text: '待补充',
+    //     text: '精彩文章',
     //     collapsed: false,
     //     items: [
-    //       { text: '待补充', link: '/' },
+    //       { text: '如何超过大多数人', link: '/如何超过大多数人.md' },
     //
     //     ]
     //   },
@@ -22,6 +22,6 @@ export function sidebar_tools(): DefaultTheme.SidebarItem[] {
     //   },
     //   { text: '其它链接', base: '/about/', link: '/' }
     // ]
-  return generateNestedSidebar(path.resolve(__dirname, '../../src/工具'), '', )
-
-}
+  console.log(generateNestedSidebar(path.resolve(__dirname, '../../src/大数据'), '', ))
+  return generateNestedSidebar(path.resolve(__dirname, '../../src/大数据'), '', )
+  }
