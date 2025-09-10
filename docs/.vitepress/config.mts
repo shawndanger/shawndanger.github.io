@@ -12,9 +12,11 @@ import {sidebar_bigdata} from "./sidebars/bigdata";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "程序匠",
-  description: "程序匠",
+  title: "邓少匠",
+  description: "邓少匠",
   srcDir: './src',
+  srcExclude:['./drafts'],
+  assetsDir: 'assets',
   cleanUrls: true,
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
