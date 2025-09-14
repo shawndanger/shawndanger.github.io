@@ -5,7 +5,8 @@ export function nav(): DefaultTheme.NavItem[] {
         {text: '首页', link: '/'},
         {text: '计算机基础', link: '/计算机基础'},
         {text: '大数据', link: '/大数据'},
-        {text: '成长思考', link: '/成长'},
+        {text: '成长思考', link: '/成长思考'},
+        {text: '随手记', link: '/随手记'},
         {text: '面试宝典', link: '/面试'},
         {text: '开源工具', link: '/工具'},
         {

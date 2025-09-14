@@ -1,167 +1,198 @@
-import { defineConfig, type DefaultTheme } from 'vitepress'
-import { nav } from './navConfig.ts'
-import { sidebar_guide } from './sidebars/guide.ts'
-import { sidebar_interview } from './sidebars/interview.ts'
-import { sidebar_tools } from './sidebars/tools.ts'
-import { sidebar_growth } from './sidebars/growth'
-import { sidebar_about } from './sidebars/about.ts'
-import { sidebar_about_examples } from './sidebars/aboutExamples.ts'
+import {defineConfig, type DefaultTheme} from 'vitepress'
+import {nav} from './sidebars/navConfig'
+import {sidebar_interview} from './sidebars/interview'
+import {sidebar_tools} from './sidebars/tools'
+import {sidebar_growth} from './sidebars/growth'
+import {sidebar_about} from './sidebars/about'
+import {sidebar_about_examples} from './sidebars/aboutExamples'
 import {sidebar_ComputerBase} from "./sidebars/computerBase";
 import {sidebar_bigdata} from "./sidebars/bigdata";
+import {sidebar_quickNotes} from "./sidebars/quickNotes";
 
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "邓少匠",
-  description: "邓少匠",
-  srcDir: './src',
-  srcExclude:['./drafts'],
-  assetsDir: 'assets',
-  cleanUrls: true,
-  themeConfig: {
-    // https://vitepress.dev/reference/default-theme-config
-    nav: nav(),
-    search: { provider: 'local',options: searchOptions() },
-    sidebar: {
-      // '指南': { base: '/指南', items: sidebar_guide() },
-      '计算机基础': { base: '/计算机基础', items: sidebar_ComputerBase() },
-      '大数据': { base: '/大数据', items: sidebar_bigdata() },
-      '成长': { base: '/成长', items: sidebar_growth() },
-      '面试': { base: '/面试', items: sidebar_interview() },
-      '工具': { base: '/工具', items: sidebar_tools() },
-      '关于': { base: '/关于', items: sidebar_about() },
-      '/about/examples/': { base: '/关于/examples', items: sidebar_about_examples() },
+    title: "邓少匠",
+    description: "邓少匠",
+    srcDir: './src',
+    srcExclude: ['./src/drafts'],
+    assetsDir: 'assets',
+    cleanUrls: true,
+    themeConfig: {
+        // https://vitepress.dev/reference/default-theme-config
+        nav: nav(),
+        search: {provider: 'local', options: searchOptions()},
+        sidebar: {
+            // '指南': { base: '/指南', items: sidebar_guide() },
+            '计算机基础': {base: '/计算机基础', items: sidebar_ComputerBase()},
+            '大数据': {base: '/大数据', items: sidebar_bigdata()},
+            '成长思考': {base: '/成长思考', items: sidebar_growth()},
+            '随手记': {base: '/随手记', items: sidebar_quickNotes()},
+            '面试': {base: '/面试', items: sidebar_interview()},
+            '工具': {base: '/工具', items: sidebar_tools()},
+            '关于': {base: '/关于', items: sidebar_about()},
+            // '/about/examples/': {base: '/关于/examples', items: sidebar_about_examples()},
+        },
+        outline: {level: 'deep', label: '页面导航'},
+        socialLinks: [
+            {icon: 'github', link: 'https://github.com/shawndanger'}
+        ],
+        editLink: {
+            pattern: 'https://github.com/shawndanger/shawndanger.github.io/edit/master/docs/src/:path',
+            text: '在Github上编辑此页面'
+        },
+        footer: {
+            message: 'Released under the MIT License.',
+            copyright: `Copyright © 2024-${new Date().getFullYear()} shawndanger.`
+        },
+        docFooter: {
+            prev: '上一页',
+            next: '下一页'
+        },
+        lastUpdated: {
+            text: '最后更新于'
+        },
+        notFound: {
+            title: '页面未找到',
+            quote:
+                '但如果你不改变方向，并且继续寻找，你可能最终会到达你所前往的地方。',
+            linkLabel: '前往首页',
+            linkText: '带我回首页'
+        },
+        langMenuLabel: '多语言',
+        returnToTopLabel: '回到顶部',
+        sidebarMenuLabel: '菜单',
+        darkModeSwitchLabel: '主题',
+        lightModeSwitchTitle: '切换到浅色模式',
+        darkModeSwitchTitle: '切换到深色模式',
+        skipToContentLabel: '跳转到内容',
+        // carbonAds: {
+        //     code: 'your-carbon-code',
+        //     placement: 'your-carbon-placement'
+        // },
+        aside: true
+
     },
-    outline: {level: 3, label: '页面导航'},
-    socialLinks: [
-      { icon: 'github', link: 'https://github.com/shawndanger' }
-    ],
-    editLink: {
-      pattern: 'https://github.com/shawndanger/shawndanger.github.io/edit/master/docs/src/:path',
-      text: '在Github上编辑此页面'
+    markdown: {
+        lineNumbers: true,
     },
-    footer: {
-      message: 'Released under the MIT License.',
-      copyright: `Copyright © 2024-${new Date().getFullYear()} shawndanger.`
-    },
-    docFooter: {
-      prev: '上一页',
-      next: '下一页'
-    },
+
     lastUpdated: {
-      text: '最后更新于'
+        formatOptions: {
+            dateStyle: 'full',
+            timeStyle: 'medium'
+        }
     },
-    notFound: {
-      title: '页面未找到',
-      quote:
-          '但如果你不改变方向，并且继续寻找，你可能最终会到达你所前往的地方。',
-      linkLabel: '前往首页',
-      linkText: '带我回首页'
-    },
-    langMenuLabel: '多语言',
-    returnToTopLabel: '回到顶部',
-    sidebarMenuLabel: '菜单',
-    darkModeSwitchLabel: '主题',
-    lightModeSwitchTitle: '切换到浅色模式',
-    darkModeSwitchTitle: '切换到深色模式',
-    skipToContentLabel: '跳转到内容'
-
-  },
-  markdown: {
-    lineNumbers: true
-  },
-
-  lastUpdated: {
-    formatOptions: {
-      dateStyle: 'full',
-      timeStyle: 'medium'
-    }
-  }
+    head: [
+        [
+            'script',
+            { async: '', src: 'https://www.googletagmanager.com/gtag/js?id=GTM-NP5J5VWT' }
+//             'noscript',
+//             {},
+//             `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NP5J5VWT"
+// height="0" width="0" style="display:none;visibility:hidden"></iframe>`
+        ],
+        [
+            'script',
+            {},
+            `window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'GTM-NP5J5VWT');`
+//             `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+// new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+// j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+// 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+// })(window,document,'script','dataLayer','GTM-NP5J5VWT');`
+        ]
+    ],
+    body: []
 })
 
 
 function searchOptions(): Partial<DefaultTheme.AlgoliaSearchOptions> {
-  return {
-    placeholder: '搜索文档',
-    translations: {
-      button: {
-        buttonText: '搜索文档',
-        buttonAriaLabel: '搜索文档'
-      },
-      modal: {
-        searchBox: {
-          clearButtonTitle: '清除查询条件',
-          clearButtonAriaLabel: '清除查询条件',
-          closeButtonText: '关闭',
-          closeButtonAriaLabel: '关闭',
-          placeholderText: '搜索文档',
-          placeholderTextAskAi: '向 AI 提问：',
-          placeholderTextAskAiStreaming: '回答中...',
-          searchInputLabel: '搜索',
-          backToKeywordSearchButtonText: '返回关键字搜索',
-          backToKeywordSearchButtonAriaLabel: '返回关键字搜索'
+    return {
+        placeholder: '搜索文档',
+        translations: {
+            button: {
+                buttonText: '搜索文档',
+                buttonAriaLabel: '搜索文档'
+            },
+            modal: {
+                searchBox: {
+                    clearButtonTitle: '清除查询条件',
+                    clearButtonAriaLabel: '清除查询条件',
+                    closeButtonText: '关闭',
+                    closeButtonAriaLabel: '关闭',
+                    placeholderText: '搜索文档',
+                    placeholderTextAskAi: '向 AI 提问：',
+                    placeholderTextAskAiStreaming: '回答中...',
+                    searchInputLabel: '搜索',
+                    backToKeywordSearchButtonText: '返回关键字搜索',
+                    backToKeywordSearchButtonAriaLabel: '返回关键字搜索'
+                },
+                startScreen: {
+                    recentSearchesTitle: '搜索历史',
+                    noRecentSearchesText: '没有搜索历史',
+                    saveRecentSearchButtonTitle: '保存至搜索历史',
+                    removeRecentSearchButtonTitle: '从搜索历史中移除',
+                    favoriteSearchesTitle: '收藏',
+                    removeFavoriteSearchButtonTitle: '从收藏中移除',
+                    recentConversationsTitle: '最近的对话',
+                    removeRecentConversationButtonTitle: '从历史记录中删除对话'
+                },
+                errorScreen: {
+                    titleText: '无法获取结果',
+                    helpText: '你可能需要检查你的网络连接'
+                },
+                noResultsScreen: {
+                    noResultsText: '无法找到相关结果',
+                    suggestedQueryText: '你可以尝试查询',
+                    reportMissingResultsText: '你认为该查询应该有结果？',
+                    reportMissingResultsLinkText: '点击反馈'
+                },
+                resultsScreen: {
+                    askAiPlaceholder: '向 AI 提问： '
+                },
+                askAiScreen: {
+                    disclaimerText: '答案由 AI 生成，可能不准确，请自行验证。',
+                    relatedSourcesText: '相关来源',
+                    thinkingText: '思考中...',
+                    copyButtonText: '复制',
+                    copyButtonCopiedText: '已复制！',
+                    copyButtonTitle: '复制',
+                    likeButtonTitle: '赞',
+                    dislikeButtonTitle: '踩',
+                    thanksForFeedbackText: '感谢你的反馈！',
+                    preToolCallText: '搜索中...',
+                    duringToolCallText: '搜索 ',
+                    afterToolCallText: '已搜索',
+                    aggregatedToolCallText: '已搜索'
+                },
+                footer: {
+                    selectText: '选择',
+                    submitQuestionText: '提交问题',
+                    selectKeyAriaLabel: 'Enter 键',
+                    navigateText: '切换',
+                    navigateUpKeyAriaLabel: '向上箭头',
+                    navigateDownKeyAriaLabel: '向下箭头',
+                    closeText: '关闭',
+                    backToSearchText: '返回搜索',
+                    closeKeyAriaLabel: 'Esc 键',
+                    poweredByText: '搜索提供者'
+                }
+            }
         },
-        startScreen: {
-          recentSearchesTitle: '搜索历史',
-          noRecentSearchesText: '没有搜索历史',
-          saveRecentSearchButtonTitle: '保存至搜索历史',
-          removeRecentSearchButtonTitle: '从搜索历史中移除',
-          favoriteSearchesTitle: '收藏',
-          removeFavoriteSearchButtonTitle: '从收藏中移除',
-          recentConversationsTitle: '最近的对话',
-          removeRecentConversationButtonTitle: '从历史记录中删除对话'
+        miniSearch: {
+            options: {
+                tokenize: customTokenizer // 使用自定义分词器
+            },
         },
-        errorScreen: {
-          titleText: '无法获取结果',
-          helpText: '你可能需要检查你的网络连接'
-        },
-        noResultsScreen: {
-          noResultsText: '无法找到相关结果',
-          suggestedQueryText: '你可以尝试查询',
-          reportMissingResultsText: '你认为该查询应该有结果？',
-          reportMissingResultsLinkText: '点击反馈'
-        },
-        resultsScreen: {
-          askAiPlaceholder: '向 AI 提问： '
-        },
-        askAiScreen: {
-          disclaimerText: '答案由 AI 生成，可能不准确，请自行验证。',
-          relatedSourcesText: '相关来源',
-          thinkingText: '思考中...',
-          copyButtonText: '复制',
-          copyButtonCopiedText: '已复制！',
-          copyButtonTitle: '复制',
-          likeButtonTitle: '赞',
-          dislikeButtonTitle: '踩',
-          thanksForFeedbackText: '感谢你的反馈！',
-          preToolCallText: '搜索中...',
-          duringToolCallText: '搜索 ',
-          afterToolCallText: '已搜索',
-          aggregatedToolCallText: '已搜索'
-        },
-        footer: {
-          selectText: '选择',
-          submitQuestionText: '提交问题',
-          selectKeyAriaLabel: 'Enter 键',
-          navigateText: '切换',
-          navigateUpKeyAriaLabel: '向上箭头',
-          navigateDownKeyAriaLabel: '向下箭头',
-          closeText: '关闭',
-          backToSearchText: '返回搜索',
-          closeKeyAriaLabel: 'Esc 键',
-          poweredByText: '搜索提供者'
-        }
-      }
-    },
-    miniSearch: {
-      options: {
-        tokenize: customTokenizer // 使用自定义分词器
-      },
-    },
-  }
+    }
 }
+
 // 自定义分词函数
 function customTokenizer(text) {
-  // 去除空格，每个字分词
-  return Array.from(new Intl.Segmenter('cn', { granularity: 'word' }).segment(text.replace(/ /g, ''))).map(item => item.segment)
+    // 去除空格，每个字分词
+    return Array.from(new Intl.Segmenter('cn', {granularity: 'word'}).segment(text.replace(/ /g, ''))).map(item => item.segment)
 }

@@ -34,7 +34,7 @@ export function generateNestedSidebar(
         // 如果是 index.md，则作为当前目录的链接
         if (fileName === 'index') {
           return {
-            text: '简介',
+            // text: '',
             link: `${basePath}/`
           }
         }
@@ -53,7 +53,7 @@ export function generateNestedSidebar(
     const directoryItems = directories.map(dir => {
       const dirPathFull = path.join(dirPath, dir.name)
       const dirBasePath = `${basePath}/${dir.name}`
-
+      if (dir.name === 'assets') return ;
       // 递归生成子目录的侧边栏
       const subItems = generateNestedSidebar(dirPathFull, dirBasePath, overrides)
 
@@ -69,9 +69,9 @@ export function generateNestedSidebar(
       }
 
       // 如果目录中有 index.md，则添加链接
-      if (fs.existsSync(path.join(dirPathFull, 'index.md'))) {
+      // if (fs.existsSync(path.join(dirPathFull, 'index.md'))) {
         // dirItem.link = `${dirBasePath}/`
-      }
+      // }
 
       return dirItem
     })

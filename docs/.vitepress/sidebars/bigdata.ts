@@ -1,5 +1,5 @@
 import { type DefaultTheme } from 'vitepress'
-import {generateNestedSidebar} from "../genSidebar";
+import {generateNestedSidebar} from "./genSidebar";
 import path from "path";
 
 export function sidebar_bigdata(): DefaultTheme.SidebarItem[] {
@@ -22,6 +22,6 @@ export function sidebar_bigdata(): DefaultTheme.SidebarItem[] {
     //   },
     //   { text: '其它链接', base: '/about/', link: '/' }
     // ]
-  console.log(generateNestedSidebar(path.resolve(__dirname, '../../src/大数据'), '', ))
+  // console.log(generateNestedSidebar(path.resolve(__dirname, '../../src/大数据'), '', ))
   return generateNestedSidebar(path.resolve(__dirname, '../../src/大数据'), '', )
   }

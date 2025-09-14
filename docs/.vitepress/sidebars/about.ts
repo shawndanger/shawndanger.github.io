@@ -1,5 +1,5 @@
 import { type DefaultTheme } from 'vitepress'
-import {generateNestedSidebar} from "../genSidebar";
+import {generateNestedSidebar} from "./genSidebar";
 import path from "path";
 
 export function sidebar_about(): DefaultTheme.SidebarItem[] {
